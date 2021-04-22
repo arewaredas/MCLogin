@@ -1,0 +1,3 @@
+MCLogin uygulamasını yüklemek için,
+https://github.com/arewaredas/MCLogin/releases/tag/setup
+Sayfasına girmelisiniz, gerisi kolay.
