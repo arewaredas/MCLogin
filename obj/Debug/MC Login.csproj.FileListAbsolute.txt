@@ -1,0 +1,20 @@
+C:\Users\ASUS\source\repos\MC Login\MC Login\bin\Debug\MC Login.exe.config
+C:\Users\ASUS\source\repos\MC Login\MC Login\bin\Debug\MC Login.exe
+C:\Users\ASUS\source\repos\MC Login\MC Login\bin\Debug\MC Login.pdb
+C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC Login.csprojAssemblyReference.cache
+C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC_Login.Form1.resources
+C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC_Login.Properties.Resources.resources
+C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC Login.csproj.GenerateResource.cache
+C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC Login.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC Login.exe
+C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC Login.pdb
+C:\Users\ASUS\source\repos\MC Login\MC Login\bin\Debug\CmlLib.dll
+C:\Users\ASUS\source\repos\MC Login\MC Login\bin\Debug\DotNetZip.dll
+C:\Users\ASUS\source\repos\MC Login\MC Login\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ASUS\source\repos\MC Login\MC Login\bin\Debug\DotNetZip.pdb
+C:\Users\ASUS\source\repos\MC Login\MC Login\bin\Debug\DotNetZip.xml
+C:\Users\ASUS\source\repos\MC Login\MC Login\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC_Login.Form2.resources
+C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC Login.csproj.CopyComplete
+C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC_Login.SplashScreen.resources
+C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC_Login.OturumAç.resources
