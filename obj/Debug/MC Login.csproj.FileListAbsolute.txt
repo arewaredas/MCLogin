@@ -18,3 +18,5 @@ C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC_Login.Form2.resources
 C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC Login.csproj.CopyComplete
 C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC_Login.SplashScreen.resources
 C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC_Login.OturumAç.resources
+C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC_Login.GuncellemeleriDenetle.resources
+C:\Users\ASUS\source\repos\MC Login\MC Login\obj\Debug\MC_Login.AvatarIndirildi.resources

@@ -25,7 +25,16 @@ namespace MC_Login
             button1.PerformClick();
             fileread.Close();
         }
+        void Hesabim()
+        {
+            basarimkazanildi.Text = "Başarım Kazanıldı";
+            basarimadi.Text = "Hesabım";
+            basarimaciklamasi.Text = "Bir hesap oluşturun.";
 
+            File.Create(@"AchievementsData\Hesabim.mcloginachievement");
+
+            basarimgidiyor.Start();
+        }
         public Form1()
         {
             InitializeComponent();
@@ -130,6 +139,26 @@ namespace MC_Login
             {
 
             }
+
+            if (Directory.Exists("hesap"))
+            {
+                if (Directory.Exists("AchievementsData"))
+                {
+                    if (File.Exists(@"AchievementsData\Hesabim.mcloginachievement"))
+                    {
+
+                    }
+                    else
+                    {
+                        Hesabim();
+                    }
+                }
+                else
+                {
+                    Directory.CreateDirectory("AchievementsData");
+                    Hesabim();
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -174,6 +203,21 @@ namespace MC_Login
             user = radioButton1.Text;
             username.Text = radioButton1.Text;
             button1.PerformClick();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            GuncellemeleriDenetle denetle = new GuncellemeleriDenetle();
+            denetle.Show();
+        }
+
+        private void basarimgidiyor_Tick(object sender, EventArgs e)
+        {
+            basarimkazanildi.Text = "";
+            basarimadi.Text = "";
+            basarimaciklamasi.Text = "";
+
+            basarimgidiyor.Stop();
         }
     }
 }

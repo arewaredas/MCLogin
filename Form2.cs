@@ -25,7 +25,16 @@ namespace MC_Login
         private Class1.EventHandlers handlers;
         private Class1.RichPresence presence;
 
+        void IlkProfil() 
+        {
+            basarimkazanildi.Text = "Başarım Kazanıldı";
+            basarimadi.Text = "İlk Profil";
+            basarimaciklamasi.Text = "İlk kez bir profili görüntüleyin.";
 
+            basarimgidiyor.Start();
+                
+            File.Create(@"AchievementsData\IlkProfil.mcloginachievement");
+        }
         private void Form2_Load(object sender, EventArgs e)
         {
             label2.Text = Form1.user;
@@ -49,7 +58,23 @@ namespace MC_Login
             {
                 pictureBox4.Image = Bitmap.FromStream(stream);
             }
-        
+
+            if (Directory.Exists("AchievementsData"))
+            {
+                if (File.Exists(@"AchievementsData\IlkProfil.mcloginachievement"))
+                {
+                    
+                }
+                else
+                {
+                    IlkProfil();
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory("AchievementsData");
+                IlkProfil();
+            }
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
@@ -92,9 +117,25 @@ namespace MC_Login
 
         private void button4_Click(object sender, EventArgs e)
         {
-            WebBrowser skindl = new WebBrowser();
-            
-            skindl.Navigate("https://minecraftskinstealer.com/api/v1/skin/download/skin/" +label2.Text+ "");
+            if (Directory.Exists(@"C:\MCLoginDownloadedAvatars"))
+            {
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile("https://minecraftskinstealer.com/api/v1/skin/download/skin/" + label2.Text + "", @"C:\MCLoginDownloadedAvatars\" + Form1.user + "_Skin.png");
+
+                AvatarIndirildi indirildi = new AvatarIndirildi();
+                indirildi.Show();
+            }
+            else
+            {
+                Directory.CreateDirectory(@"C:\MCLoginDownloadedAvatars");
+
+
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile("https://minecraftskinstealer.com/api/v1/skin/download/skin/" + label2.Text + "", @"C:\MCLoginDownloadedAvatars\" + Form1.user + "_Skin.png");
+
+                AvatarIndirildi indirildi = new AvatarIndirildi();
+                indirildi.Show();
+            }
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -121,23 +162,71 @@ namespace MC_Login
 
         private void button6_Click(object sender, EventArgs e)
         {
-            WebBrowser faceavatardl = new WebBrowser();
+            if (Directory.Exists(@"C:\MCLoginDownloadedAvatars"))
+            {
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile("https://minecraftskinstealer.com/api/v1/skin/download/face/" + Form1.user + "", @"C:\MCLoginDownloadedAvatars\" + Form1.user + "_Face_Avatar.png");
 
-            faceavatardl.Navigate("https://minecraftskinstealer.com/api/v1/skin/download/face/" + Form1.user + "");
+                AvatarIndirildi indirildi = new AvatarIndirildi();
+                indirildi.Show();
+            }
+            else
+            {
+                Directory.CreateDirectory(@"C:\MCLoginDownloadedAvatars");
+
+
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile("https://minecraftskinstealer.com/api/v1/skin/download/face/" + Form1.user + "", @"C:\MCLoginDownloadedAvatars\" + Form1.user + "_Face_Avatar.png");
+
+                AvatarIndirildi indirildi = new AvatarIndirildi();
+                indirildi.Show();
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            WebBrowser cubeavatardl = new WebBrowser();
+            if (Directory.Exists(@"C:\MCLoginDownloadedAvatars"))
+            {
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile("https://minecraftskinstealer.com/api/v1/skin/download/cube/" + Form1.user + "", @"C:\MCLoginDownloadedAvatars\" + Form1.user + "_Cube_Head_Avatar.png");
 
-            cubeavatardl.Navigate("https://minecraftskinstealer.com/api/v1/skin/download/cube/" +Form1.user+ "");
+                AvatarIndirildi indirildi = new AvatarIndirildi();
+                indirildi.Show();
+            }
+            else
+            {
+                Directory.CreateDirectory(@"C:\MCLoginDownloadedAvatars");
+
+
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile("https://minecraftskinstealer.com/api/v1/skin/download/cube/" + Form1.user + "", @"C:\MCLoginDownloadedAvatars\" + Form1.user + "_Cube_Head_Avatar.png");
+
+                AvatarIndirildi indirildi = new AvatarIndirildi();
+                indirildi.Show();
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            WebBrowser bustavatardl = new WebBrowser();
+            if (Directory.Exists(@"C:\MCLoginDownloadedAvatars"))
+            {
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile("https://minecraftskinstealer.com/api/v1/skin/download/bust/" + Form1.user + "", @"C:\MCLoginDownloadedAvatars\" + Form1.user + "_Bust_Avatar.png");
 
-            bustavatardl.Navigate("https://minecraftskinstealer.com/api/v1/skin/download/bust/" + Form1.user + "");
+                AvatarIndirildi indirildi = new AvatarIndirildi();
+                indirildi.Show();
+            }
+            else
+            {
+                Directory.CreateDirectory(@"C:\MCLoginDownloadedAvatars");
+
+
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile("https://minecraftskinstealer.com/api/v1/skin/download/bust/" + Form1.user + "", @"C:\MCLoginDownloadedAvatars\" + Form1.user + "_Bust_Avatar.png");
+
+                AvatarIndirildi indirildi = new AvatarIndirildi();
+                indirildi.Show();
+            }
         }
 
         private void mod_CheckedChanged(object sender, EventArgs e)
@@ -202,9 +291,25 @@ namespace MC_Login
 
         private void button9_Click(object sender, EventArgs e)
         {
-            WebBrowser bodyavatardl = new WebBrowser();
-            
-            bodyavatardl.Navigate("https://minecraftskinstealer.com/api/v1/skin/download/body/" + Form1.user + "");
+            if (Directory.Exists(@"C:\MCLoginDownloadedAvatars"))
+            {
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile("https://minecraftskinstealer.com/api/v1/skin/download/body/" + Form1.user + "", @"C:\MCLoginDownloadedAvatars\" + Form1.user + "_Body_Avatar.png");
+
+                AvatarIndirildi indirildi = new AvatarIndirildi();
+                indirildi.Show();
+            }
+            else
+            {
+                Directory.CreateDirectory(@"C:\MCLoginDownloadedAvatars");
+
+
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile("https://minecraftskinstealer.com/api/v1/skin/download/body/" + Form1.user + "", @"C:\MCLoginDownloadedAvatars\" + Form1.user + "_Body_Avatar.png");
+
+                AvatarIndirildi indirildi = new AvatarIndirildi();
+                indirildi.Show();
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -371,6 +476,20 @@ namespace MC_Login
             {
                 File.WriteAllText(opf.FileName, Form1.user, Encoding.Default);
             }
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            IlkProfil();
+        }
+
+        private void basarimgidiyor_Tick(object sender, EventArgs e)
+        {
+            basarimkazanildi.Text = "";
+            basarimadi.Text = "";
+            basarimaciklamasi.Text = "";
+
+            basarimgidiyor.Stop();
         }
     }
 }

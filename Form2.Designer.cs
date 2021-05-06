@@ -78,12 +78,18 @@ namespace MC_Login
             this.kapat = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.karemodcik = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.basarimkazanildi = new System.Windows.Forms.Label();
+            this.basarimadi = new System.Windows.Forms.Label();
+            this.basarimaciklamasi = new System.Windows.Forms.Label();
+            this.basarimgidiyor = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -400,11 +406,40 @@ namespace MC_Login
             this.karemodcik.UseVisualStyleBackColor = true;
             this.karemodcik.Click += new System.EventHandler(this.button13_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.basarimaciklamasi);
+            this.panel1.Controls.Add(this.basarimadi);
+            this.panel1.Controls.Add(this.basarimkazanildi);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
+            // basarimkazanildi
+            // 
+            resources.ApplyResources(this.basarimkazanildi, "basarimkazanildi");
+            this.basarimkazanildi.Name = "basarimkazanildi";
+            // 
+            // basarimadi
+            // 
+            resources.ApplyResources(this.basarimadi, "basarimadi");
+            this.basarimadi.Name = "basarimadi";
+            // 
+            // basarimaciklamasi
+            // 
+            resources.ApplyResources(this.basarimaciklamasi, "basarimaciklamasi");
+            this.basarimaciklamasi.Name = "basarimaciklamasi";
+            // 
+            // basarimgidiyor
+            // 
+            this.basarimgidiyor.Interval = 2999;
+            this.basarimgidiyor.Tick += new System.EventHandler(this.basarimgidiyor_Tick);
+            // 
             // Form2
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.karemodcik);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.kapat);
@@ -447,6 +482,8 @@ namespace MC_Login
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -501,5 +538,10 @@ namespace MC_Login
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button karemodcik;
         private System.Windows.Forms.ToolStripMenuItem mLGOlarakKaydetToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label basarimkazanildi;
+        private System.Windows.Forms.Label basarimaciklamasi;
+        private System.Windows.Forms.Label basarimadi;
+        private System.Windows.Forms.Timer basarimgidiyor;
     }
 }
