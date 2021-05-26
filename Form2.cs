@@ -13,6 +13,7 @@ using CmlLib.Utils;
 using CmlLib;
 using System.Diagnostics;
 using System.Net;
+using System.Collections.Specialized;
 
 namespace MC_Login
 {
@@ -25,6 +26,73 @@ namespace MC_Login
         private Class1.EventHandlers handlers;
         private Class1.RichPresence presence;
 
+        public static string basarim;
+
+        public static void HttpUploadFile(string url, string file, string paramName, string contentType, NameValueCollection nvc)
+        {
+
+            string boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x");
+            byte[] boundarybytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
+
+            HttpWebRequest wr = (HttpWebRequest)WebRequest.Create(url);
+            wr.ContentType = "multipart/form-data; boundary=" + boundary;
+            wr.Method = "POST";
+            wr.KeepAlive = true;
+            wr.Credentials = System.Net.CredentialCache.DefaultCredentials;
+
+            Stream rs = wr.GetRequestStream();
+
+            string formdataTemplate = "Content-Disposition: form-data; name=\"{0}\"\r\n\r\n{1}";
+            foreach (string key in nvc.Keys)
+            {
+                rs.Write(boundarybytes, 0, boundarybytes.Length);
+                string formitem = string.Format(formdataTemplate, key, nvc[key]);
+                byte[] formitembytes = System.Text.Encoding.UTF8.GetBytes(formitem);
+                rs.Write(formitembytes, 0, formitembytes.Length);
+            }
+            rs.Write(boundarybytes, 0, boundarybytes.Length);
+
+            string headerTemplate = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n";
+            string header = string.Format(headerTemplate, paramName, file, contentType);
+            byte[] headerbytes = System.Text.Encoding.UTF8.GetBytes(header);
+            rs.Write(headerbytes, 0, headerbytes.Length);
+
+            FileStream fileStream = new FileStream(file, FileMode.Open, FileAccess.Read);
+            byte[] buffer = new byte[4096];
+            int bytesRead = 0;
+            while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) != 0)
+            {
+                rs.Write(buffer, 0, bytesRead);
+            }
+            fileStream.Close();
+
+            byte[] trailer = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "--\r\n");
+            rs.Write(trailer, 0, trailer.Length);
+            rs.Close();
+
+            WebResponse wresp = null;
+            try
+            {
+                wresp = wr.GetResponse();
+                Stream stream2 = wresp.GetResponseStream();
+                StreamReader reader2 = new StreamReader(stream2);
+
+            }
+            catch (Exception ex)
+            {
+
+                if (wresp != null)
+                {
+                    wresp.Close();
+                    wresp = null;
+                }
+            }
+            finally
+            {
+                wr = null;
+            }
+        }
+
         void IlkProfil() 
         {
             basarimkazanildi.Text = "Başarım Kazanıldı";
@@ -34,6 +102,27 @@ namespace MC_Login
             basarimgidiyor.Start();
                 
             File.Create(@"AchievementsData\IlkProfil.mcloginachievement");
+        }
+
+        void IhtiyacimVardi()
+        {
+            basarimkazanildi.Text = "Başarım Kazanıldı";
+            basarimadi.Text = "İhtiyacım Vardı";
+            basarimaciklamasi.Text = "Bir avatarı indirin.";
+
+            basarimgidiyor.Start();
+
+            File.Create(@"AchievementsData\IhtiyacimVardi.mcloginachievement");
+        }
+        void EkranimKare()
+        {
+            basarimkazanildi.Text = "Başarım Kazanıldı";
+            basarimadi.Text = "Ekranım Kare";
+            basarimaciklamasi.Text = "Kare monitör moduna geçin.";
+
+            basarimgidiyor.Start();
+
+            File.Create(@"AchievementsData\EkranimKare.mcloginachievement");
         }
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -67,18 +156,30 @@ namespace MC_Login
                 }
                 else
                 {
-                    IlkProfil();
+                    basarim = "IlkProfil";
+
+                    BasarimKazanildi kazan = new BasarimKazanildi();
+                    kazan.Show();
                 }
             }
             else
             {
                 Directory.CreateDirectory("AchievementsData");
-                IlkProfil();
+                basarim = "IlkProfil";
+
+                BasarimKazanildi kazan = new BasarimKazanildi();
+                kazan.Show();
             }
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
+            pictureBox1.ImageLocation = "";
+            pictureBox2.ImageLocation = "";
+            pictureBox3.ImageLocation = "";
+            pictureBox4.ImageLocation = "";
+            pictureBox5.ImageLocation = "";
+
             Application.Exit();
         }
 
@@ -181,6 +282,36 @@ namespace MC_Login
                 AvatarIndirildi indirildi = new AvatarIndirildi();
                 indirildi.Show();
             }
+
+
+
+
+
+
+            if (Directory.Exists("AchievementsData"))
+            {
+                if (File.Exists(@"AchievementsData\IhtiyacimVardi.mcloginachievement"))
+                {
+
+                }
+                else
+                {
+                    basarim = "IhtiyacimVardi";
+
+                    BasarimKazanildi kazan = new BasarimKazanildi();
+                    kazan.Show();
+
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory("AchievementsData");
+                basarim = "IhtiyacimVardi";
+
+                BasarimKazanildi kazan = new BasarimKazanildi();
+                kazan.Show();
+
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -204,6 +335,34 @@ namespace MC_Login
                 AvatarIndirildi indirildi = new AvatarIndirildi();
                 indirildi.Show();
             }
+
+
+
+
+
+
+            if (Directory.Exists("AchievementsData"))
+            {
+                if (File.Exists(@"AchievementsData\IhtiyacimVardi.mcloginachievement"))
+                {
+
+                }
+                else
+                {
+                    basarim = "IhtiyacimVardi";
+
+                    BasarimKazanildi kazan = new BasarimKazanildi();
+                    kazan.Show();
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory("AchievementsData");
+                basarim = "IhtiyacimVardi";
+
+                BasarimKazanildi kazan = new BasarimKazanildi();
+                kazan.Show();
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -226,6 +385,34 @@ namespace MC_Login
 
                 AvatarIndirildi indirildi = new AvatarIndirildi();
                 indirildi.Show();
+            }
+
+
+
+
+
+
+            if (Directory.Exists("AchievementsData"))
+            {
+                if (File.Exists(@"AchievementsData\IhtiyacimVardi.mcloginachievement"))
+                {
+
+                }
+                else
+                {
+                    basarim = "IhtiyacimVardi";
+
+                    BasarimKazanildi kazan = new BasarimKazanildi();
+                    kazan.Show();
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory("AchievementsData");
+                basarim = "IhtiyacimVardi";
+
+                BasarimKazanildi kazan = new BasarimKazanildi();
+                kazan.Show();
             }
         }
 
@@ -310,6 +497,34 @@ namespace MC_Login
                 AvatarIndirildi indirildi = new AvatarIndirildi();
                 indirildi.Show();
             }
+
+
+
+
+
+
+            if (Directory.Exists("AchievementsData"))
+            {
+                if (File.Exists(@"AchievementsData\IhtiyacimVardi.mcloginachievement"))
+                {
+
+                }
+                else
+                {
+                    basarim = "IhtiyacimVardi";
+
+                    BasarimKazanildi kazan = new BasarimKazanildi();
+                    kazan.Show();
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory("AchievementsData");
+                basarim = "IhtiyacimVardi";
+
+                BasarimKazanildi kazan = new BasarimKazanildi();
+                kazan.Show();
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -369,6 +584,34 @@ namespace MC_Login
         {
            
             WindowState = FormWindowState.Maximized;
+
+
+
+
+
+
+            if (Directory.Exists("AchievementsData"))
+            {
+                if (File.Exists(@"AchievementsData\EkranimKare.mcloginachievement"))
+                {
+
+                }
+                else
+                {
+                    basarim = "EkranimKare";
+
+                    BasarimKazanildi kazan = new BasarimKazanildi();
+                    kazan.Show();
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory("AchievementsData");
+                basarim = "EkranimKare";
+
+                BasarimKazanildi kazan = new BasarimKazanildi();
+                kazan.Show();
+            }
         }
 
         private void adıKopyalaToolStripMenuItem_Click(object sender, EventArgs e)

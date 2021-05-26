@@ -97,7 +97,12 @@ namespace MC_Login
             if (e.KeyCode == Keys.Enter)
             {
                 button1.PerformClick();
-            }   
+            }
+
+            if (e.KeyCode == Keys.F5)
+            {
+                Application.Restart();
+            }
         }
 
         public static void kullaniciadinioku()
@@ -150,13 +155,19 @@ namespace MC_Login
                     }
                     else
                     {
-                        Hesabim();
+                        Form2.basarim = "Hesabim";
+
+                        BasarimKazanildi kazan = new BasarimKazanildi();
+                        kazan.Show();
                     }
                 }
                 else
                 {
                     Directory.CreateDirectory("AchievementsData");
-                    Hesabim();
+                    Form2.basarim = "Hesabim";
+
+                    BasarimKazanildi kazan = new BasarimKazanildi();
+                    kazan.Show();
                 }
             }
         }
@@ -218,6 +229,14 @@ namespace MC_Login
             basarimaciklamasi.Text = "";
 
             basarimgidiyor.Stop();
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                Application.Restart();
+            }
         }
     }
 }

@@ -43,7 +43,7 @@ namespace MC_Login
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(475, 402);
             this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("http://bit.ly/mcloginguncellemeleridenetle46", System.UriKind.Absolute);
+            this.webBrowser1.Url = new System.Uri("http://bit.ly/mcloginguncellemeleridenetle48", System.UriKind.Absolute);
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
             // button1

@@ -24,10 +24,10 @@ namespace MC_Login
 
 
             WebClient webClient = new WebClient();
-            webClient.DownloadFile("https://mcloginn.github.io/Updates/MCLogin.4.7.Setup.exe",
-            @"Updates\MCLogin.4.7.Setup.exe");
+            webClient.DownloadFile("https://mcloginn.github.io/Updates/MCLogin.4.9.Setup.exe",
+            @"Updates\MCLogin.4.9.Setup.exe");
 
-            System.Diagnostics.Process.Start(@"Updates\MCLogin.4.7.Setup.exe");
+            System.Diagnostics.Process.Start(@"Updates\MCLogin.4.9.Setup.exe");
 
             this.Hide();
             timer1.Start();
@@ -40,7 +40,7 @@ namespace MC_Login
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            if (webBrowser1.Url.ToString() == "https://mcloginn.github.io/4.5/guncellemeyok.html")
+            if (webBrowser1.Url.ToString() == "https://mcloginn.github.io/4.8/guncellemeyok.html")
             {
                 button1.Enabled = false;
             }
